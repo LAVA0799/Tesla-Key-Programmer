@@ -1,13 +1,10 @@
-import time
+import smbus2
 
 def read_eeprom(chip, port):
-    print(f"[INFO] قراءة بيانات EEPROM من الشريحة {chip} عبر المنفذ {port} ...")
-    # مثال تجريبي - هنا تضع كود القراءة الفعلي حسب نوع المبرمجة
-    time.sleep(1)
-    print("[DONE] تمّت القراءة بنجاح (بيانات وهمية)!")
-
-def write_eeprom(chip, port):
-    print(f"[INFO] كتابة بيانات EEPROM على الشريحة {chip} عبر المنفذ {port} ...")
-    # مثال تجريبي - هنا تضع كود الكتابة الفعلي حسب نوع المبرمجة
-    time.sleep(1)
-    print("[DONE] تمّت الكتابة بنجاح!")
+    # مثال مبسط: قراءة من 24C16 على I2C رقم 1 والعنوان 0x50
+    bus = smbus2.SMBus(int(port))
+    address = 0x50  # غيّر العنوان حسب نوع الشريحة
+    data = []
+    for i in range(256):  # حجم البيانات
+        data.append(bus.read_byte_data(address, i))
+    print(f"[DONE] قرأت {len(data)} بايت من EEPROM: {data}")
