@@ -28,7 +28,7 @@
 
 1. **انسخ المستودع:**
    ```bash
-   git clone https://github.com/<LAVA0799>/tesla-key-programmer.git
+   git clone https://github.com/LAVA0799/tesla-key-programmer.git
    cd tesla-key-programmer
    ```
 
